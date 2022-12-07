@@ -5,7 +5,7 @@ Imports System.Linq
 Partial Public Class _Default
 	Inherits System.Web.UI.Page
 
-	Protected Sub cbCars_ItemRequestedByValue(ByVal source As Object, ByVal e As DevExpress.Web.ASPxEditors.ListEditItemRequestedByValueEventArgs)
+	Protected Sub cbCars_ItemRequestedByValue(ByVal source As Object, ByVal e As DevExpress.Web.ListEditItemRequestedByValueEventArgs)
 		If e.Value IsNot Nothing AndAlso TypeOf e.Value Is Integer Then
 			Dim data = MyDataSource.GetData(cbLocation.Text)
 			Dim query = _
@@ -16,7 +16,7 @@ Partial Public Class _Default
 			cbCars.DataBind()
 		End If
 	End Sub
-	Protected Sub cbCars_ItemsRequestedByFilterCondition(ByVal source As Object, ByVal e As DevExpress.Web.ASPxEditors.ListEditItemsRequestedByFilterConditionEventArgs)
+	Protected Sub cbCars_ItemsRequestedByFilterCondition(ByVal source As Object, ByVal e As DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs)
 		Dim data = MyDataSource.GetData(cbLocation.Text)
 		Dim query = _
 			From r In data _

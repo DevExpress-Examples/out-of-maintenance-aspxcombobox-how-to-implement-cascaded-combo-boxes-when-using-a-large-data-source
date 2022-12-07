@@ -3,7 +3,7 @@ using System.Linq;
 
 public partial class _Default : System.Web.UI.Page {
 
-    protected void cbCars_ItemRequestedByValue(object source, DevExpress.Web.ASPxEditors.ListEditItemRequestedByValueEventArgs e) {
+    protected void cbCars_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e) {
         if(e.Value != null && e.Value is int) {
             var data = MyDataSource.GetData(cbLocation.Text);
             var query = from r in data where r.Value == (int)e.Value select r;
@@ -11,7 +11,7 @@ public partial class _Default : System.Web.UI.Page {
             cbCars.DataBind();
         }
     }
-    protected void cbCars_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ASPxEditors.ListEditItemsRequestedByFilterConditionEventArgs e) {
+    protected void cbCars_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e) {
         var data = MyDataSource.GetData(cbLocation.Text);
         var query = from r in data where r.Text.StartsWith(e.Filter) select r;
         cbCars.DataSource = query.Skip(e.BeginIndex).Take(e.EndIndex - e.BeginIndex + 1);
